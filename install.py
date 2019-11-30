@@ -51,3 +51,18 @@ yellowText("Installing Chromium")
 verboseText("Downloading most recent version of Chromium")
 os.system("wget https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots -O ~/.LiLio/chromium.zip")
 os.system("unzip ~/.LiLio/chromium.zip -d ~/.LiLio/chromium && rm -rf ~/.LiLio/chromium.zip")
+os.system("chmod +x ~/.LiLio/chromium/chrome-linux/chrome")
+
+# Modifies some Chromium defaults
+arguments=['export GOOGLE_API_KEY="no"',
+           'export GOOGLE_DEFAULT_CLIENT_ID="no"',
+           'export GOOGLE_DEFAULT_CLIENT_SECRET="no"']
+for arg in arguments:
+    os.system("(cd ~/.LiLio/chromium/chrome-linux && %s)" %(arg))
+
+# Copies the program files to the working directory to the home directory
+yellowText("Installing LiLio")
+if verbose:
+    os.system("cp -rv . ~/.LiLio")
+else:
+    os.system("cp -r . ~/.LiLio")

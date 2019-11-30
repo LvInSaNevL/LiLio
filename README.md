@@ -1,8 +1,10 @@
 # LiLio
 A portible game streaming box
 
+## Build your own
+[The parts list to build your own LiLio is here](https://docs.google.com/spreadsheets/d/1o2KC0deXbZ5__kjTrOGxbklZBP4nP3jFMt7TPF-E2JY/edit?usp=sharing)
 
-### Instalation
+## Instalation
 To install LiLio simply install Raspbian Lite on an SD card, and follow the following instructions
 
 `git clone https://github.com/LvInSaNevL/LiLio`
