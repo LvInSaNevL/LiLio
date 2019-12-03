@@ -60,9 +60,39 @@ arguments=['export GOOGLE_API_KEY="no"',
 for arg in arguments:
     os.system("(cd ~/.LiLio/chromium/chrome-linux && %s)" %(arg))
 
+# Verifies all the prerequisites are installed
+prereqs=['python-tk']
+yellowText("Installing needed prerequisites")
+for req in prereqs:
+    verboseText("Installing %s" %(req))
+    os.system("sudo apt install %s -y" %(req))
+verboseText("Updating the software and OS, and cleaning up the install")
+os.system("sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y")
+
 # Copies the program files to the working directory to the home directory
 yellowText("Installing LiLio")
 if verbose:
     os.system("cp -rv . ~/.LiLio")
 else:
     os.system("cp -r . ~/.LiLio")
+
+# Shows the user the LiLio splash and informs them that LiLio is installed and they need to restart their device
+splash=[
+'   _        _      _        _            ',
+'  | |      (_)    | |      (_)     ___   ',
+'  | |__    | |    | |__    | |    / _ \  ',
+'  |____|  _|_|_   |____|  _|_|_   \___/  ',
+'_|"""""|_|"""""|_|"""""|_|"""""|_|"""""| ',
+'\"`-0-0-\'\"`-0-0-\'\"`-0-0-\'\"`-0-0-\'\"`-0-0-\' ',
+' ',
+'Welcome to LiLio, your own pocket sized gaming consle!',
+'LiLio has successfully installed on your device. All thats standing between you and a world class gaming experience is a quick restart.',
+' ',
+'Press any button to reboot your LiLio console...'
+]
+
+for line in splash:
+    yellowText(line)
+
+input()
+os.system("restart")
