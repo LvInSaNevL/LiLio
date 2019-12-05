@@ -9,9 +9,12 @@ readme = "README.md"
 description = """
       | |      (_)    | |      (_)     ___   
       | |__    | |    | |__    | |    / _ \  
-      |____|  _|_|_   |____|  _|_|_   \___/  
-    _|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
+      |____|  _|_|_   |____|  _|_|_   \\___/  
+    _|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"|_|\"\"\"\"\"| 
     "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
 
 LiLio is a portible gaming device capible of a world class gaming experience powered by Stadia.
 """
+
+[dependencies]
+gtk = { version = "0.2", features = ["v3_22"] }
