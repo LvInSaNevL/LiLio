@@ -1,0 +1,17 @@
+[package]
+name = "LiLio"
+version = "0.0.1"
+edition = "2018"
+authors = ["Matt Wollam <mattwollam@gmail.com>"]
+license = "GNU GPL-V3"
+repository = "https://github.com/LvInSaNevL/LiLio"
+readme = "README.md"
+description = """
+      | |      (_)    | |      (_)     ___   
+      | |__    | |    | |__    | |    / _ \  
+      |____|  _|_|_   |____|  _|_|_   \___/  
+    _|"""""|_|"""""|_|"""""|_|"""""|_|"""""| 
+    "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
+
+LiLio is a portible gaming device capible of a world class gaming experience powered by Stadia.
+"""
