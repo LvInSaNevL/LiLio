@@ -1,3 +1,5 @@
+# This branch is no longer developed. The original UI was writen in Python, but I decided that I would like to learn Rust so I switch the language. This branch and codebase is kept around for archival purposes. 
+
       | |      (_)    | |      (_)     ___   
       | |__    | |    | |__    | |    / _ \  
       |____|  _|_|_   |____|  _|_|_   \___/  
