@@ -18,3 +18,5 @@ LiLio is a portible gaming device capible of a world class gaming experience pow
 
 [dependencies]
 gtk = { version = "0.2", features = ["v3_22"] }
+openssl = "0.6"
+request = "0.0.8"

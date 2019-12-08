@@ -21,6 +21,7 @@ impl App {
         window.set_titlebar(&header.container);
         window.set_title("LiLio");
         window.set_wmclass("lilio", "LiLio");
+        window.set_default_size(800, 480);
 
         // Exit button logic
         window.connect_delete_event(move |_, _| {
