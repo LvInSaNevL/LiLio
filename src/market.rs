@@ -24,29 +24,30 @@ pub fn Download(target: &str) -> Result<(), Error> {
     let request_url = format!("{}",target);
     let mut response = reqwest::get(&request_url)?;
     let marketplace: Vec<App> = response.json()?;
-    CacheMarket(marketplace);
+    CacheMarket(marketplace, true);
     Ok(())
 }
 
-pub fn CacheMarket(marketData: Vec<App>) {
+pub fn CacheMarket(marketData: Vec<App>, global: bool) {
     fs::create_dir_all("./market");
     let file = OpenOptions::new()
                    .read(true)
                    .write(true)
                    .truncate(true)
                    .create(true)
-                   .open("./market/full-list.json")
+                   .open(getPath(global))
                    .unwrap();
     
     serde_json::to_writer(&file, &marketData);
 }   
 
 pub fn ReadMarket(global: bool) -> Vec<App> {
-    let path = String.new();
-    if global { path = "./market/full-list.json"; }
-    else { path = "./market/device-list.json"; }
-
-    let rawData = fs::read_to_string(path).unwrap();
-    let parsedData: Vec<App> = serde_json::from_str(rawData).unwrap();
+    let rawData = fs::read_to_string(getPath(global)).unwrap();
+    let parsedData: Vec<App> = serde_json::from_str(&rawData).unwrap();
     return parsedData;
+}
+
+fn getPath(global: bool) -> String {
+    if global { return "./market/full-list.json".to_string(); }
+    else { return "./market/device-list.json".to_string(); }
 }

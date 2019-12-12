@@ -5,10 +5,10 @@ import os
 env = ["sudo dpkg --add-architecture i386",
        "sudo apt update && sudo apt upgrade"]
 
-preqs = ["libssl-dev",
-         "pkg-config",
+preqs = ["pkg-config",
          "libgtk-3-dev",
-         "libssl-dev:i386"]
+         "libssl-dev:i386",
+         "x11-xserver-utils"]
 
 print('\033[92m' + "Configuring the system environment" + '\033[0m')
 for arg in env:
