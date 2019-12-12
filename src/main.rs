@@ -20,7 +20,8 @@ fn main() {
     }
 
     // Checks if the marketplace is up to date
-    market::Downloader("https://raw.githubusercontent.com/LvInSaNevL/LiLio_market/master/market.json", "market.json");
+    market::Download("https://raw.githubusercontent.com/LvInSaNevL/LiLio_market/master/market_minified.json");
+    market::ReadMarket(true);
 
     // Inits GTK before rest of the codebase
     if gtk::init().is_err() {
@@ -30,15 +31,16 @@ fn main() {
 
     // Inits the UI and widgets
     let app = ui_manager::App::new();
+
+    
+    
+    let button = Button::new_with_label("Stadia");
+    button.connect_clicked(|_| {
+        println!("Stadia");
+    });
+    app.window.add(&button);
+
     app.window.show_all();
-
-    // Creates the buttons
-    let child_padding = 0;
-    let information_label = Label::new("Specific Information: ");
-
-    let horizontal_box = Box::new(Orientation::Horizontal, child_padding);
-
-    horizontal_box.pack_start(&information_label, false, false, 0);
 
     // Enter the GTK main event loop
     gtk::main();
