@@ -12,7 +12,7 @@ pub struct Header {
 
 // Creating the actual root window for LiLio
 impl App {
-    pub fn new() -> App {
+    pub fn new(res: Vec<i32>) -> App {
         // Defining the root window the header bar
         let window = Window::new(WindowType::Toplevel);
         let header = Header::new();
@@ -21,7 +21,7 @@ impl App {
         window.set_titlebar(&header.container);
         window.set_title("LiLio");
         window.set_wmclass("lilio", "LiLio");
-        window.set_default_size(800, 480);
+        window.set_default_size(res[0], res[1]);
 
         // Exit button logic
         window.connect_delete_event(move |_, _| {
