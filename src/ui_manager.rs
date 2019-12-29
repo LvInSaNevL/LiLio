@@ -1,13 +1,14 @@
 extern crate gtk;
 use gtk::*;
 use crate::market;
-use std::thread;
 
+#[derive(Clone)]
 pub struct App {
     pub window: Window,
     pub header: Header,
 }
 
+#[derive(Clone)]
 pub struct Header {
     pub container: HeaderBar,
 }
@@ -51,11 +52,22 @@ impl Header {
     }
 }
 
+// pub fn menuManager(app: App, res: Vec<i32>) {
+//     let _menu = true;
+    
+//     loop {
+//         if _menu { _menu = mainMenu(app, res); }
+//         else { _menu = marketMenu(app, res); }
+//     }
+// }
+
 pub fn mainMenu(app: App, res: Vec<i32>) {
     let buttonSize = (res[1] / 3);
     let appData = market::ReadMarket(false);
     let menuBox = gtk::ButtonBox::new(gtk::Orientation::Horizontal);
     menuBox.set_spacing(buttonSize / 2);
+    menuBox.set_margin_start(100);
+    menuBox.set_margin_end(100);
     let scroll = gtk::ScrolledWindow::new(None, None);
     scroll.set_policy(gtk::PolicyType::Automatic, gtk::PolicyType::Automatic);
 
@@ -63,7 +75,7 @@ pub fn mainMenu(app: App, res: Vec<i32>) {
     let marketButton = Button::new_with_label("Market");
     marketButton.set_size_request(buttonSize, buttonSize);
     marketButton.connect_clicked(move |_| {
-        println!("Market");
+        println!("Hello, World!");
     });
     menuBox.pack_start(&marketButton, false, false, 0);
 
