@@ -61,7 +61,14 @@ os.system("sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get upgrad
 
 # Building LiLio (finally)
 yellowText("Building LiLio")
-os.system("cargo build")
+build = ["mkdir ./market",
+         "touch ./market/full-list.json",
+         "touch ./market/device-list.json",
+         "echo \"[{\"name\":\"Stadia\",\"class\":\"stadia\",\"target\":\"web\",\"desc\":\"Push the envelope of gaming with Stadia.\",\"developer\":\"Google\",\"added\":\"2019-12-07\",\"changed\":\"2019-12-07\",\"file\":\"https://stadia.google.com/\"}]\" > \"./market/device-list.json\""
+         "cargo build --release"]
+for step in build:
+    verboseText("%s", %(step))
+    os.system(step)
 
 # Copies the program files to the working directory to the home directory
 yellowText("Installing LiLio")

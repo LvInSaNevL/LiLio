@@ -16,7 +16,7 @@ fn main() {
     let mut resolution: Vec<i32> = utils::getResolution();
 
     // Checks if the marketplace is up to date
-    //market::Download("https://raw.githubusercontent.com/LvInSaNevL/LiLio_market/master/market_minified.json");
+    market::Download("https://raw.githubusercontent.com/LvInSaNevL/LiLio_market/master/market_minified.json");
 
     // Inits GTK before rest of the codebase
     if gtk::init().is_err() {

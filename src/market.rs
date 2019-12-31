@@ -28,14 +28,14 @@ pub fn Download(target: &str) -> Result<(), Error> {
     Ok(())
 }
 
-pub fn CacheMarket(marketData: Vec<MarketApp>, global: bool) {
+fn CacheMarket(marketData: Vec<MarketApp>, global: bool) {
     fs::create_dir_all("./market");
     let file = OpenOptions::new()
         .read(true)
         .write(true)
         .truncate(true)
         .create(true)
-        .open(getPath(global))
+        .open(getPath(true))
         .unwrap();
 
     serde_json::to_writer(&file, &marketData);
