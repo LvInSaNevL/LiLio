@@ -17,6 +17,6 @@ To install LiLio simply install Raspbian Lite on an SD card, and follow the foll
 
 `cd LiLio`
 
-`python3 install.py`
+`python3 core/install.py` or `python3 core/install.py -v` if you would live verbose build logs
 
 Lilio will handle the rest of the installation for you and restart your Raspberry Pi when its done!
