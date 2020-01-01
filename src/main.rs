@@ -28,7 +28,7 @@ fn main() {
     }
 
     // Inits the UI and widgets
-    style::stylizer("AC0D57".to_string());
+    style::stylizer("AC0D57".to_string(), "FC4A1F".to_string());
     let app = ui_manager::App::new(resolution.clone());
     ui_manager::mainMenu(app, resolution.clone());
 

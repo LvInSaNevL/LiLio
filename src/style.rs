@@ -1,8 +1,9 @@
 extern crate gdk;
 extern crate gtk;
+extern crate hex;
 use gtk::prelude::*;
 
-pub fn stylizer(color: String) {
+pub fn stylizer(colorA: String, colorB: String) {
     // The base stylesheet for LiLio
     let rawStyle = "
         button {
@@ -10,18 +11,13 @@ pub fn stylizer(color: String) {
             background-image: none;
         }
         window {
-            background-image: -gtk-gradient (linear,
-                                            0 0, 1 0,
-                                            color-stop(0, #[colorA]),
-                                            color-stop(1, #[colorB]));
+            background-image: url('./noise.png'), linear-gradient(130deg, #[colorA], #[colorB]);
             color: blue;
             font-weight: bold;
         }";
     // Creates the actual stylesheet
-    let mut formattedStyle = str::replace(rawStyle, "[colorA]", &color);
-            formattedStyle = str::replace(&formattedStyle, "[colorB]", &color);
-
-    println!("{}", formattedStyle);
+    let mut formattedStyle = str::replace(rawStyle, "[colorA]", &colorA);
+            formattedStyle = str::replace(&formattedStyle, "[colorB]", &colorB);
 
     // Creates the CSS Provider and adds the styling
     let provider = gtk::CssProvider::new();
