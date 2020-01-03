@@ -1,5 +1,7 @@
+extern crate gdk;
 extern crate gtk;
 use crate::market;
+use gtk::prelude::*;
 use gtk::*;
 
 #[derive(Clone)]
@@ -35,15 +37,20 @@ impl App {
 }
 
 // pub fn menuManager(app: App, res: Vec<i32>) {
-//     let _menu = true;
+// 	let _menu = true;
 
-//     loop {
-//         if _menu { _menu = mainMenu(app, res); }
-//         else { _menu = marketMenu(app, res); }
-//     }
+// 	loop {
+// 		destroy(gtk::ScrolledWindow);
+// 		if _menu {
+// 			_menu = mainMenu(app, res);
+// 		} else {
+// 			_menu = marketMenu(app, res);
+// 		}
+// 	}
 // }
 
 pub fn mainMenu(app: App, res: Vec<i32>) {
+	println!("{:?}", gdk::WindowExt::get_toplevel(&self));
 	let buttonSize = (res[1] / 3);
 	let appData = market::ReadMarket(false);
 	let menuBox = gtk::ButtonBox::new(gtk::Orientation::Horizontal);
@@ -57,7 +64,7 @@ pub fn mainMenu(app: App, res: Vec<i32>) {
 	let marketButton = Button::new_with_label("Market");
 	marketButton.set_size_request(buttonSize, buttonSize);
 	marketButton.connect_clicked(move |_| {
-		println!("Hello, World!");
+		market();
 	});
 	menuBox.pack_start(&marketButton, false, false, 0);
 
@@ -75,4 +82,9 @@ pub fn mainMenu(app: App, res: Vec<i32>) {
 	scroll.add(&menuBox);
 	app.window.add(&scroll);
 	app.window.show_all();
+}
+
+fn market() {
+	let marketWindow = &gdk::Screen::get_default().expect("Error initializing gtk css provider.");
+	println!("{:?}", marketWindow);
 }
