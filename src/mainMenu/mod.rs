@@ -1,3 +1,5 @@
+mod style;
+
 extern crate gdk;
 extern crate gtk;
 use crate::market;
@@ -50,7 +52,7 @@ impl App {
 // }
 
 pub fn mainMenu(app: App, res: Vec<i32>) {
-	println!("{:?}", gdk::WindowExt::get_toplevel(&self));
+	style::stylizer("AC0D57".to_string(), "FC4A1F".to_string());
 	let buttonSize = (res[1] / 3);
 	let appData = market::ReadMarket(false);
 	let menuBox = gtk::ButtonBox::new(gtk::Orientation::Horizontal);

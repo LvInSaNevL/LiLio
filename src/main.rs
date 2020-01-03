@@ -1,8 +1,7 @@
 #![allow(non_snake_case)]
 
+mod mainMenu;
 mod market;
-mod style;
-mod ui_manager;
 mod utils;
 extern crate pipers;
 use gtk::*;
@@ -28,9 +27,8 @@ fn main() {
 	}
 
 	// Inits the UI and widgets
-	style::stylizer("AC0D57".to_string(), "FC4A1F".to_string());
-	let app = ui_manager::App::new(resolution.clone());
-	ui_manager::mainMenu(app, resolution.clone());
+	let app = mainMenu::App::new(resolution.clone());
+	mainMenu::mainMenu(app, resolution.clone());
 
 	// Enter the GTK main event loop
 	gtk::main();
