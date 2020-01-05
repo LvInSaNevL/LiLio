@@ -20,3 +20,12 @@ To install LiLio simply install Raspbian Lite on an SD card, and follow the foll
 `python3 core/install.py` or `python3 core/install.py -v` if you would live verbose build logs
 
 Lilio will handle the rest of the installation for you and restart your Raspberry Pi when its done!
+
+## Creating a dev environment
+If you are cloning LiLio to work on development, you may not need the entire setup, so this section gives you a stripped down version which is just enough to get you up and running. 
+
+`git clone https://github.com/LvInSaNevL/LiLio`
+
+`cd LiLio`
+
+Run the code in `core/install.py` lines 63-71, which is prefixed by `# Building LiLio (finally)`. What this does is create the `market` direactory and the required JSON files. It also adds Stadia to the `device-list.json`, which is needed because without *something* in the file LiLio panics. 
