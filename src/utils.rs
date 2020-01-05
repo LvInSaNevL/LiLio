@@ -1,4 +1,4 @@
-use std::process::{Command, Stdio};
+use std::process::Command;
 
 pub fn splashPrint() {
 	let splash_array = [

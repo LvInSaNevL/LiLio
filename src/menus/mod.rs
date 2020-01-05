@@ -38,25 +38,25 @@ impl App {
 	}
 }
 
-static mut main: bool = true;
-static mut switch: bool = true;
+static mut MAIN: bool = true;
+static mut SWITCH: bool = true;
 pub fn menuManager(app: App, res: Vec<i32>) {
-	let buttonSize = (res[1] / 3);
+	let buttonSize = res[1] / 3;
 
 	unsafe {
 		loop {
-			if switch {
-				println!("{}", switch.to_string());
-				if main {
+			if SWITCH {
+				println!("{}", SWITCH.to_string());
+				if MAIN {
 					println!("main");
 					app.window.add(&mainMenu(buttonSize));
 					app.window.show_all();
-					switch = false;
+					SWITCH = false;
 				} else {
 					println!("market");
 					app.window.add(&marketMenu(buttonSize));
 					app.window.show_all();
-					switch = false;
+					SWITCH = false;
 				}
 			} else {
 				break;
@@ -80,8 +80,8 @@ fn mainMenu(buttonSize: i32) -> gtk::ScrolledWindow {
 	let marketButton = Button::new_with_label("Market");
 	marketButton.set_size_request(buttonSize, buttonSize);
 	marketButton.connect_clicked(move |_| unsafe {
-		main = false;
-		switch = true;
+		MAIN = false;
+		SWITCH = true;
 	});
 	menuBox.pack_start(&marketButton, false, false, 0);
 

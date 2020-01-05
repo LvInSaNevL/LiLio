@@ -1,7 +1,6 @@
 extern crate gdk;
 extern crate gtk;
 extern crate hex;
-use gtk::prelude::*;
 
 pub fn stylizer(colorA: String, colorB: String) {
 	// The base stylesheet for LiLio
@@ -21,7 +20,8 @@ pub fn stylizer(colorA: String, colorB: String) {
 
 	// Creates the CSS Provider and adds the styling
 	let provider = gtk::CssProvider::new();
-	gtk::CssProviderExt::load_from_data(&provider, formattedStyle.as_bytes());
+	gtk::CssProviderExt::load_from_data(&provider, formattedStyle.as_bytes())
+		.expect("Failed to add CSS to the program");
 
 	// We give the CssProvided to the default screen so the CSS rules we added
 	// can be applied to our window.

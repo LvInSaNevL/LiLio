@@ -24,12 +24,12 @@ pub fn Download(target: &str) -> Result<(), Error> {
 	let request_url = format!("{}", target);
 	let mut response = reqwest::get(&request_url)?;
 	let marketplace: Vec<MarketApp> = response.json()?;
-	CacheMarket(marketplace, true);
+	CacheMarket(marketplace);
 	Ok(())
 }
 
-fn CacheMarket(marketData: Vec<MarketApp>, global: bool) {
-	fs::create_dir_all("./market");
+fn CacheMarket(marketData: Vec<MarketApp>) {
+	fs::create_dir_all("./market").expect("Unable to create the market directory, the location may not be correct or it may be unaccesable. Please restart your console and try again.");
 	let file = OpenOptions::new()
 		.read(true)
 		.write(true)
@@ -38,7 +38,7 @@ fn CacheMarket(marketData: Vec<MarketApp>, global: bool) {
 		.open(getPath(true))
 		.unwrap();
 
-	serde_json::to_writer(&file, &marketData);
+	serde_json::to_writer(&file, &marketData).expect("Unable to write data to the market file.");
 }
 
 pub fn ReadMarket(global: bool) -> Vec<MarketApp> {
@@ -47,8 +47,8 @@ pub fn ReadMarket(global: bool) -> Vec<MarketApp> {
 	return parsedData;
 }
 
-fn getPath(global: bool) -> String {
-	if global {
+fn getPath(_global: bool) -> String {
+	if _global {
 		return "./market/full-list.json".to_string();
 	} else {
 		return "./market/device-list.json".to_string();
