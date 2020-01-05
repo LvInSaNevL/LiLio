@@ -1,7 +1,7 @@
 #![allow(non_snake_case)]
 
-mod mainMenu;
 mod market;
+mod menus;
 mod utils;
 extern crate pipers;
 use gtk::*;
@@ -27,8 +27,8 @@ fn main() {
 	}
 
 	// Inits the UI and widgets
-	let app = mainMenu::App::new(resolution.clone());
-	mainMenu::mainMenu(app, resolution.clone());
+	let app = menus::App::new(resolution.clone());
+	menus::menuManager(app, resolution.clone());
 
 	// Enter the GTK main event loop
 	gtk::main();
