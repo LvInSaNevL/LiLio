@@ -1,8 +1,8 @@
 #![allow(non_snake_case)]
 
 mod market;
-mod menus;
 mod utils;
+mod windows;
 use std::process;
 
 // Init point for LiLio
@@ -25,8 +25,7 @@ fn main() {
 	}
 
 	// Inits the UI and widgets
-	let app = menus::App::new(resolution.clone());
-	menus::menuManager(app, resolution.clone());
+	windows::windowSelect("main".to_string());
 
 	// Enter the GTK main event loop
 	gtk::main();

@@ -1,0 +1,6 @@
+2020/01/18-17:18:00.646 228a Reusing MANIFEST /mnt/LiLio/LiLio/chrome_new_profile/Default/Local Storage/leveldb/MANIFEST-000001
+2020/01/18-17:18:00.647 228a Recovering log #3
+2020/01/18-17:18:00.647 228a Reusing old log /mnt/LiLio/LiLio/chrome_new_profile/Default/Local Storage/leveldb/000003.log 
+2020/01/18-17:18:16.240 239a Level-0 table #5: started
+2020/01/18-17:18:16.291 239a Level-0 table #5: 14042 bytes OK
+2020/01/18-17:18:16.365 239a Delete type=0 #3

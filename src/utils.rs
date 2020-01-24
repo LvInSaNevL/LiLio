@@ -31,3 +31,24 @@ pub fn getResolution() -> Vec<i32> {
 
 	return formattedInt;
 }
+
+pub fn openWindow(target: String) {
+	let arguments = [
+		"export GOOGLE_API_KEY=\"AIzaSyDbjeCeu0_TLxrdk41e_m1Ds3I99r01bng\"",
+		"export GOOGLE_DEFAULT_CLIENT_ID=\"1052749106742-o2mvdjad6s9hfu6r38fjdc0koupluarf.apps.googleusercontent.com\"",
+		"export GOOGLE_DEFAULT_CLIENT_SECRET=\"TTjdPWjrZ1iAeT632IV9DiEB\""
+	];
+
+	for command in arguments.iter() {
+		Command::new(command).spawn();
+	}
+
+	Command::new("sh")
+		.arg("-c")
+		.arg(format!(
+			"~/.LiLio/chromium/chrome-linux/chrome --disable-notification {}",
+			target
+		))
+		.spawn()
+		.expect("Failed to launch Chromium");
+}
