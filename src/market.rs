@@ -49,8 +49,8 @@ pub fn ReadMarket(global: bool) -> Vec<MarketApp> {
 
 fn getPath(_global: bool) -> String {
 	if _global {
-		return "./market/full-list.json".to_string();
+		return "./data/full-list.json".to_string();
 	} else {
-		return "./market/device-list.json".to_string();
+		return "./data/device-list.json".to_string();
 	}
 }

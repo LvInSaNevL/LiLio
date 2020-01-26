@@ -46,7 +46,7 @@ pub fn openWindow(target: String) {
 	Command::new("sh")
 		.arg("-c")
 		.arg(format!(
-			"~/.LiLio/chromium/chrome-linux/chrome --disable-notification {}",
+			"~/.LiLio/chromium/chrome-linux/chrome --disable-notification --start-fullscreen --kiosk {}",
 			target
 		))
 		.spawn()

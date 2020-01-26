@@ -68,7 +68,7 @@ fn mainMenu() -> String {
 			Command::new("sh")
 				.arg("-c")
 				.arg(format!(
-					"chromium-browser --disable-notification {}",
+					"chromium-browser --disable-notification --start-fullscreen --kiosk {}",
 					&apps.file
 				))
 				.spawn()
