@@ -31,7 +31,7 @@ fn mainMenu() -> String {
 	let res: Vec<i32> = utils::getResolution();
 
 	// Setting the window name for the user and wm
-	window.set_wmclass("lilio", "LiLio");
+	window.set_wmclass("lilio_market", "LiLio Market");
 	window.set_default_size(res[0], res[1]);
 	window.set_decorated(false);
 
@@ -45,7 +45,6 @@ fn mainMenu() -> String {
 	let scroll = gtk::ScrolledWindow::new(None, None);
 	scroll.set_policy(gtk::PolicyType::Automatic, gtk::PolicyType::Automatic);
 	let appData = marketData::ReadMarket(false);
-	style::stylizer("AC0D57".to_string(), "FC4A1F".to_string());
 
 	let menuBox = gtk::ButtonBox::new(gtk::Orientation::Horizontal);
 	menuBox.set_spacing(buttonSize / 2);
@@ -55,7 +54,8 @@ fn mainMenu() -> String {
 	// The market button always needs to be created so it goes in its own code block
 	let marketButton = Button::new_with_label("Market");
 	marketButton.set_size_request(buttonSize, buttonSize);
-	marketButton.connect_clicked(move |_| unsafe {
+	marketButton.grab_focus();
+	marketButton.connect_clicked(move |_| {
 		windowSelect("market".to_string());
 	});
 	menuBox.pack_start(&marketButton, false, false, 0);
@@ -65,6 +65,7 @@ fn mainMenu() -> String {
 		let newButton = Button::new_with_label(&apps.name);
 		newButton.set_size_request(buttonSize, buttonSize);
 		newButton.connect_clicked(move |_| {
+			style::mainStylizer(apps.colorA.to_string(), apps.colorB.to_string());
 			Command::new("sh")
 				.arg("-c")
 				.arg(format!(

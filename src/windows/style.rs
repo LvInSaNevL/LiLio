@@ -2,15 +2,21 @@ extern crate gdk;
 extern crate gtk;
 extern crate hex;
 
-pub fn stylizer(colorA: String, colorB: String) {
+pub fn mainStylizer(colorA: String, colorB: String) {
 	// The base stylesheet for LiLio
 	let rawStyle = "
+		.	title {
+			color: red;
+		}
+		#desc {
+			color: blue;
+		}
         button {
             /* If we don't put it, the yellow background won't be visible */
             background-image: none;
         }
         window {
-            background-image: url('./noise.png'), linear-gradient(130deg, #[colorA], #[colorB]);
+            background-image: url('./data/noise.png'), linear-gradient(130deg, #[colorA], #[colorB]);
             color: blue;
             font-weight: bold;
         }";
@@ -30,4 +36,8 @@ pub fn stylizer(colorA: String, colorB: String) {
 		&provider,
 		gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
 	);
+}
+
+pub fn domCreator(element: &str, class: &str, content: &str) -> String {
+	return format!("<id=\"{}\">{}", class, content);
 }

@@ -16,6 +16,8 @@ pub struct MarketApp {
 	pub developer: String,
 	pub added: String,
 	pub changed: String,
+	pub colorA: String,
+	pub colorB: String,
 	pub file: String,
 }
 

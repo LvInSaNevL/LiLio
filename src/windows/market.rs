@@ -14,7 +14,7 @@ pub fn marketMenu() -> String {
 	let res: Vec<i32> = utils::getResolution();
 
 	// Setting the window name for the user and wm
-	window.set_wmclass("lilio", "LiLio");
+	window.set_wmclass("lilio_market", "LiLio Market");
 	window.set_default_size(res[0], res[1]);
 	window.set_decorated(false);
 
@@ -24,30 +24,24 @@ pub fn marketMenu() -> String {
 		Inhibit(false)
 	});
 
-	let buttonSize = res[1] / 3;
-	let scroll = gtk::ScrolledWindow::new(None, None);
-	scroll.set_policy(gtk::PolicyType::Automatic, gtk::PolicyType::Automatic);
-	scroll.set_margin_start(0);
+	let flow = gtk::FlowBox::new();
 	let appData = marketData::ReadMarket(true);
-	style::stylizer("FC4A1F".to_string(), "AC0D57".to_string());
+	style::mainStylizer("AC0D57".to_string(), "FC4A1F".to_string());
 
-	let menuBox = gtk::ButtonBox::new(gtk::Orientation::Vertical);
-	menuBox.set_spacing(buttonSize / 2);
-	menuBox.set_margin_top(100);
-	menuBox.set_margin_bottom(100);
+	let stadiaData = &appData[0];
+	let newFixed = gtk::Fixed::new();
 
-	// Loops through the users market/device-list.json file to create the buttons they want
-	for apps in appData {
-		let newButton = Button::new_with_label(&apps.name);
-		newButton.set_size_request(buttonSize, buttonSize);
-		newButton.connect_clicked(move |_| {
-			println!("{} from the market!", apps.name);
-		});
-		menuBox.pack_start(&newButton, false, false, 0);
-	}
+	let newTitle = Label::new(None);
+	newTitle.set_markup(&stadiaData.name);
+	newFixed.add(&newTitle);
 
-	scroll.add(&menuBox);
-	window.add(&scroll);
+	let newDesc = Label::new(None);
+	newDesc.set_markup(&stadiaData.desc);
+	newFixed.add(&newDesc);
+
+	
+
+	window.add(&newFixed);
 	window.show_all();
 
 	return "halt".to_string();

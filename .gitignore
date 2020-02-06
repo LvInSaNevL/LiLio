@@ -3,7 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=rust,linux,visualstudio,visualstudiocode
 
 ### LiLio ###
-/market/
+/data/device-list.json
 /chrome_new_profile/
 
 

@@ -3,12 +3,13 @@
 mod market;
 mod utils;
 mod windows;
+#[path = "windows/style.rs"]
+mod style;
 use std::process;
 
 // Init point for LiLio
 fn main() {
 	utils::splashPrint();
-	let resolution: Vec<i32> = utils::getResolution();
 
 	// Checks if the marketplace is up to date
 	market::Download(
@@ -25,6 +26,7 @@ fn main() {
 	}
 
 	// Inits the UI and widgets
+	style::mainStylizer("FD698B".to_string(), "1D0740".to_string());
 	windows::windowSelect("main".to_string());
 
 	// Enter the GTK main event loop
